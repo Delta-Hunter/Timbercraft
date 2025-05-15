@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Products | TimberCraft Furnishings</title>
+  <link rel="stylesheet" href="styles.css"/>
+ </head>
+ <body>
+
+  <!-- Header -->
+  <header>
+    <div class="header-logo">
+      <img src="Images/logo.png" alt="TimberCraft Logo">
+    </div>
+      <div class="header-title">
+        <h1>Welcome to</h1>
+      <h1>TimberCraft Furnishings</h1>
+    </div>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="products.html">Products</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+  </header>
+
+  <!-- Products Section -->
+<section id="products">
+  <h2>Our Collection</h2>
+  <p class="product-intro">
+    Browse through our handcrafted furniture made with the finest woods and elegant craftsmanship.
+  </p>
+
+  <!-- Filter Bar -->
+  <div class="filter-bar">
+    <select id="categoryFilter">
+      <option value="all">All Categories</option>
+      <option value="chair">Chairs</option>
+      <option value="table">Tables</option>
+      <option value="bed">Beds</option>
+    </select>
+
+    <label for="priceRange">Max Price: ₹<span id="priceValue">10000</span></label>
+    <input type="range" id="priceRange" min="1000" max="20000" value="10000" step="500">
+  </div>
+
+  <!-- ✅ Grid Container -->
+  <div class="product-gallery">
+    <!-- Product Card 1 -->
+    <div class="product-card" data-category="chair" data-price="3500">
+      <img src="Images/gallery2.jpg" alt="Classic Wooden Chair">
+      <h3>Classic Wooden Chair</h3>
+      <p>Made from solid teak, perfect for dining rooms or patios.</p>
+      <span class="price">₹3,500</span>
+      <a class="enquire-btn" href="contact.html?product=Classic Wooden Chair">Enquire</a>
+    </div>
+        <div class="product-card" data-category="chair" data-price="3500">
+      <img src="Images/gallery2.jpg" alt="Classic Wooden Chair">
+      <h3>Classic Wooden Chair</h3>
+      <p>Made from solid teak, perfect for dining rooms or patios.</p>
+      <span class="price">₹3,500</span>
+      <a class="enquire-btn" href="contact.html?product=Classic Wooden Chair">Enquire</a>
+    </div>
+        <div class="product-card" data-category="chair" data-price="3500">
+      <img src="Images/gallery2.jpg" alt="Classic Wooden Chair">
+      <h3>Classic Wooden Chair</h3>
+      <p>Made from solid teak, perfect for dining rooms or patios.</p>
+      <span class="price">₹3,500</span>
+      <a class="enquire-btn" href="contact.html?product=Classic Wooden Chair">Enquire</a>
+    </div>
+        <div class="product-card" data-category="chair" data-price="3500">
+      <img src="Images/gallery2.jpg" alt="Classic Wooden Chair">
+      <h3>Classic Wooden Chair</h3>
+      <p>Made from solid teak, perfect for dining rooms or patios.</p>
+      <span class="price">₹3,500</span>
+      <a class="enquire-btn" href="contact.html?product=Classic Wooden Chair">Enquire</a>
+    </div>
+        <div class="product-card" data-category="chair" data-price="3500">
+      <img src="Images/gallery2.jpg" alt="Classic Wooden Chair">
+      <h3>Classic Wooden Chair</h3>
+      <p>Made from solid teak, perfect for dining rooms or patios.</p>
+      <span class="price">₹3,500</span>
+      <a class="enquire-btn" href="contact.html?product=Classic Wooden Chair">Enquire</a>
+    </div>
+        <div class="product-card" data-category="chair" data-price="3500">
+      <img src="Images/gallery2.jpg" alt="Classic Wooden Chair">
+      <h3>Classic Wooden Chair</h3>
+      <p>Made from solid teak, perfect for dining rooms or patios.</p>
+      <span class="price">₹3,500</span>
+      <a class="enquire-btn" href="contact.html?product=Classic Wooden Chair">Enquire</a>
+    </div>
+
+    <!-- Product Card 2 -->
+    <div class="product-card" data-category="table" data-price="7200">
+      <img src="Images/gallery5.jpg" alt="Elegant Coffee Table">
+      <h3>Elegant Coffee Table</h3>
+      <p>Modern design with clean lines and durable finish.</p>
+      <span class="price">₹7,200</span>
+      <a class="enquire-btn" href="contact.html?product=Elegant Coffee Table">Enquire</a>
+    </div>
+
+    <!-- Product Card 3 -->
+    <div class="product-card" data-category="table" data-price="12000">
+      <img src="Images/gallery5.jpg" alt="Elegant Dining Table">
+      <h3>Elegant Dining Table</h3>
+      <p>Spacious, sturdy, and stylish centerpiece for your dining area.</p>
+      <span class="price">₹12,000</span>
+      <a class="enquire-btn" href="contact.html?product=Elegant Dining Table">Enquire</a>
+    </div>
+  </div>
+</section>
+
+
+ <!-- Modal -->
+ <div id="productModal" class="modal">
+  <div class="modal-content">
+    <span class="close-modal">&times;</span>
+    <img id="modalImg" src="" alt="">
+    <h3 id="modalTitle"></h3>
+    <p id="modalDesc"></p>
+    <div class="price" id="modalPrice"></div>
+    <div class="modal-nav">
+      <button id="prevBtn">← Previous</button>
+      <button id="nextBtn">Next →</button>
+    </div>
+    <a id="modalEnquireBtn" class="enquire-btn" href="#">Enquire</a>
+  </div>
+ </div>
+  <div class="modal-overlay"></div>
+
+  <!-- Gallery Testimonials -->
+
+
+ <section class="gallery-testimonials">
+  <h2>Our Happy Customers</h2>
+  <div class="testimonials-nav">
+    <button id="prevTestimonial">&laquo;</button>
+      <div class="Testimonials">
+      <div class="Testimonial">
+        <img src="Images\happy customer with wooden chair.jpg" alt="Happy customer with wooden chair">
+        <p>"Absolutely love my new dining table! Great craftsmanship and service."</p>
+        <h4>—Arjun Mehra</h4>
+      </div>
+      <div class="Testimonial">
+        <img src="Images\happy customer with wooden chair.jpg" alt="Living room setup">
+        <p>"Absolutely love my new living room setup! Great craftsmanship and service."</p>
+        <h4>—Arjun Mehra</h4>
+      </div>
+      <div class="Testimonial">
+        <img src="Images\happy customer with wooden chair.jpg" alt="Timbercraft product showcase">
+        <p>"Absolutely love my new Timbercraft product showcase! Great craftsmanship and service."</p>
+        <h4>—Arjun Mehra</h4>
+      </div>
+      <div class="Testimonial">
+        <img src="Images\living room setup.jpg" alt="Living room setup">
+        <p>"Absolutely love my new living room setup! Great craftsmanship and service."</p>
+        <h4>—Meera Singh</h4>
+      </div>
+      <div class="Testimonial">
+        <img src="Images\living room setup.jpg" alt="Living room setup">
+        <p>"Solid wood, beautiful finish, and quick delivery. Highly recommended!</p>
+        <h4>—Meera Singh</h4>
+      </div>
+      <div class="Testimonial">
+        <img src="Images\wooden product showcase.jpg" alt="Living room setup">
+        <p>"Solid wood, beautiful finish, and quick delivery. Highly recommended!</p>
+        <h4>—Meera Singh</h4>
+      </div>
+      <div class="Testimonial">
+        <img src="Images\wooden product showcase.jpg" alt="Living room setup">
+        <p>"Solid wood, beautiful finish, and quick delivery. Highly recommended!</p>
+        <h4>—Meera Singh</h4>
+      </div>
+      <div class="Testimonial">
+        <img src="Images\wooden product showcase.jpg" alt="Living room setup">
+        <p>"Our bedroom set feels luxurious. Will be back for more!"</p>
+        <h4>—Meera Singh</h4>
+      </div>
+      <div class="Testimonial">
+        <img src="Images\wooden product showcase.jpg" alt="Living room setup">
+        <p>"Absolutely love my new living room setup! Great craftsmanship and service."</p>
+        <h4>—Meera Singh</h4>
+      </div>
+      <!-- add more testimonials as needed -->
+      </div>
+    <button id="nextTestimonial">&raquo;</button>
+  </div>
+ </section>
+
+
+<!-- Footer Section -->
+  <section class="footer-data">
+  <footer>
+         <div class="footer-info">
+           <p style="margin-top:20px;">Follow us on:</p>
+         <div class="social-icons">
+             <a href="https://www.facebook.com" rel="noopener" rel="no-referrer-when-downgrade" target="_blank"><img src="Images\icons8-facebook-30.png" alt="Facebook"></a>
+             <a href="https://www.instagram.com" rel="noopener" rel="no-referrer-when-downgrade" target="_blank"><img src="Images\icons8-instagram-32.png" alt="Instagram"></a>
+             <a href="https://www.twitter.com" rel="noopener" rel="no-referrer-when-downgrade" target="_blank"><img src="Images\icons8-twitter-bird-30.png" alt="Twitter"></a>
+            <a href="https://www.linkedin.com" rel="noopener" rel="no-referrer-when-downgrade" target="_blank"><img src="Images\icons8-linkedin-30.png" alt="LinkedIn"></a>
+         </div>
+         </div>
+    <div class="footer-logo">
+      <img src="Images/logo.png" alt="TimberCraft Logo">
+    </div>
+    <p>Quick Links:</p>
+    <div class="footer-navigation">
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="products.html">Products</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+    </div>
+    <p>&copy; 2025 TimberCraft Furnishings | All Rights Reserved</p>
+  </footer>
+  </section>
+ <script src="scripts.js"></script>
+</body>
+</html>

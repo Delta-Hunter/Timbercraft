@@ -1,0 +1,85 @@
+header {
+  background: #2c3e50;
+  color: #fff;
+  padding: 1em;
+  text-align: center;
+  position: relative;
+  z-index: 1000;
+}
+
+header h1 {
+  padding: 0.5em;
+  font-size: 2.5em;
+  font-weight: 600;
+  color: inherit;
+  margin: 0;
+  line-height: 1.2;
+}
+
+header h1 span {
+  font-size: 1.3em;
+  color: #2980b9;
+  font-weight: 400;
+  display: block;
+}
+
+header nav {
+  margin-top: 20px;
+}
+
+/* Navigation Links */
+nav a {
+  color: #fff;
+  margin: 0 15px;
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 1.3em;
+  transition: color 0.2s ease;
+}
+
+nav a:hover {
+  text-decoration: underline;
+  color: #2980b9;
+}
+
+/* ------------------------------ */
+/* ✅ Responsive & Mobile Styles */
+/* ------------------------------ */
+@media (max-width: 768px) {
+  header {
+    padding: 1em 0.5em;
+  }
+
+  header h1 {
+    font-size: 2em;
+  }
+
+  header h1 span {
+    font-size: 1.1em;
+  }
+
+  nav {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  nav a {
+    margin: 8px 0;
+    font-size: 1.1em;
+  }
+}
+
+@media (max-width: 480px) {
+  header h1 {
+    font-size: 1.6em;
+  }
+
+  header h1 span {
+    font-size: 1em;
+  }
+
+  nav a {
+    font-size: 1em;
+  }
+}
