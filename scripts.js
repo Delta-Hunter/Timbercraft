@@ -1,25 +1,16 @@
 document.addEventListener("DOMContentLoaded", () => {
 
     // NAVIGATION LOGIC
-  document.addEventListener("DOMContentLoaded", function () {
-  const current = window.location.pathname.split("/").pop() || "index.html";
-
-  document.querySelectorAll("nav a").forEach(link => {
-    const href = link.getAttribute("href");
-
-    // Normalize both paths
-    const normalizedHref = href.split("/").pop();
-    const normalizedCurrent = current.split("/").pop();
-
-    if (normalizedHref === normalizedCurrent) {
-      link.classList.add("active");
-    }
-  });
-});
-
-
-
-
+    const navLinks = document.querySelectorAll("nav a");
+    const currentPage = window.location.pathname.split("/").pop() || "index.html";
+    console.log("Current page:", currentPage);
+    navLinks.forEach(link => {
+      const linkPage = link.getAttribute("href").split("/").pop();
+      if (linkPage === currentPage) {
+        console.log("Matched:", linkPage);
+        link.classList.add("active");
+      }
+    });
 
   // FILTERING LOGIC
     const categoryFilter = document.getElementById("categoryFilter");
@@ -163,7 +154,7 @@ document.addEventListener("DOMContentLoaded", () => {
       TestimonialsContainer.scrollBy({ left: -250, behavior: 'smooth' });
     });
   }
-});
+
 
 
 
@@ -171,57 +162,109 @@ document.addEventListener("DOMContentLoaded", () => {
 // CONTACT FORM LOGIC
 // This code will run when the DOM is fully loaded
 // It will set the product name in the contact form if it's passed in the URL
-document.addEventListener("DOMContentLoaded", () => {
-const params = new URLSearchParams(window.location.search);
-const product = params.get("product");
-if (product) {
-document.getElementById("product").value = product;
-}
+
+  const params = new URLSearchParams(window.location.search);
+  const product = params.get("product");
+  if (product) {
+    document.getElementById("product").value = product;
+  }
+
+  const form = document.getElementById("contactForm");
+  const formMessage = document.getElementById("formMessage");
+  const startTime = Date.now();
+  const honeypot = document.createElement("input");
+  honeypot.type = "text";
+  honeypot.name = "honeypot";
+  honeypot.style.display = "none";
+  form.appendChild(honeypot);
+
+  form.addEventListener("submit", async (e) => {
+    e.preventDefault();
+
+    // SPAM PROTECTION: Honeypot check
+    if (form.honeypot.value.trim() !== "") {
+    formMessage.textContent = "❌ Spam detected. Submission blocked.";
+    formMessage.className = "error";
+    return;
+    }
+
+    // SPAM PROTECTION: Delay check
+    const elapsed = Date.now() - startTime;
+    if (elapsed < 2000) {
+    formMessage.textContent = "❌ Submission too fast. Are you a bot?";
+    formMessage.className = "error";
+    return;
+    }
+
+    formMessage.textContent = "Sending...";
+    formMessage.className = "";
+
+    // Get user's IP address
+    let ipAddress = "Unavailable";
+    try {
+      const res = await fetch("https://api.ipify.org?format=json");
+      const data = await res.json();
+      ipAddress = data.ip;
+    } catch (err) {
+      console.warn("Could not fetch IP address:", err);
+    }
+
+  const formData = {
+  name: form.name.value,
+  email: form.email.value,
+  phone: form.phone.value,
+  product: form.product.value,
+  message: form.message.value,
+  honeypot: form.honeypot.value,
+  userAgent: navigator.userAgent,
+  referrer: document.referrer || "N/A",
+  currentPage: window.location.href,
+  browserLang: navigator.language,
+  platform: navigator.platform,
+  screenRes: `${screen.width}x${screen.height}`,
+  timezone: new Date().getTimezoneOffset()
+  };
+
+  // Get user's IP address
+    try {
+    const ipRes = await fetch("https://api.ipify.org?format=json");
+    const ipData = await ipRes.json();
+    formData.ip = ipData.ip;
+    } catch (err) {
+    console.warn("Could not fetch IP address:", err);
+    formData.ip = "Unavailable";
+    }
+
+    const data = new URLSearchParams(formData);
+
+    const formsubmitURL = "https://formsubmit.co/ajax/hellowworld296@gmail.com";
+    const sheetURL = "https://script.google.com/macros/s/AKfycbymJxa-vsJsgQLV0SHlJs9el3WZsYt5040Z5C8Z2jGbYwmds9Yoxn7wTrWfQ9T9F4OpVw/exec";
+
+    try {
+      // Send to Formsubmit
+      await fetch(formsubmitURL, {
+        method: "POST",
+        body: new URLSearchParams(formData),
+      });
+
+      // Send to Google Sheets
+      await fetch(sheetURL, {
+        method: "POST",
+        headers: { "Content-Type": "application/x-www-form-urlencoded" },
+        body: new URLSearchParams(formData),
+      });
+
+      formMessage.innerText = "✅ Message sent successfully!";
+      form.reset();
+      setTimeout(() => {
+        formMessage.innerText = "";
+        window.location.href = "thank-you.html";
+      }, 1500);
+    } catch (err) {
+      formMessage.innerText = "❌ Something went wrong. Please try again.";
+      console.error(err);
+    }
+  });
 });
 
-const form = document.getElementById("contactForm");
-const formMessage = document.getElementById("formMessage");
-  
-form.addEventListener("submit", async (e) => {
-e.preventDefault();
-  
-const formData = {
-name: form.name.value,
- email: form.email.value,
-product: form.product.value,
-message: form.message.value,
-};
-const data = new URLSearchParams(formData); // Updated to use URLSearchParams
-  
-const formsubmitURL = "https://formsubmit.co/ajax/hellowworld296@gmail.com"; // Replace!
-const sheetURL = "https://script.google.com/macros/s/AKfycbwxQnvWoZ42qYzXm24zfG-A8VD-pV3gvVNDvIf8u9BryCtSnBKYG_EZ9q6Dom9r6BA31g/exec"; // Replace!
-  
-try {
-// Send to Formsubmit
-await fetch(formsubmitURL, {
-method: "POST",
-body: new URLSearchParams(data), // Updated to send URLSearchParams
-});
-  
-// Send to Google Sheets
-await fetch(sheetURL, {
-method: "POST",
-headers: { "Content-Type": "application/x-www-form-urlencoded" },
-body: new URLSearchParams(data), // Updated to send URLSearchParams
-});
-  
-formMessage.innerText = "✅ Message sent successfully!";
-form.reset(); // Reset the form after submission
-setTimeout(() => {
-formMessage.innerText = ""; // Resetting the message after 2 seconds
-}, 2000); // Added timeout for message reset
-} catch (err) {
-formMessage.innerText = "❌ Something went wrong. Please try again.";
-console.error(err); // Added error logging for debugging
-}
-  
-// Redirect to thank-you page after 1 second
-setTimeout(() => {
-window.location.href = "thank-you.html";
-}, 1500); // Adjusted timeout for redirection
-});
+
