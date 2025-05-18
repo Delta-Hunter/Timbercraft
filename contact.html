@@ -43,12 +43,18 @@
   <label for="email" style="color: white;">Your Email</label>
   <input type="email" id="email" name="email" placeholder="you@example.com" required>
 
+  <label for="phone" style="color: white;">Your Phone Number</label>
+  <input type="tel" id="phone" name="phone" placeholder="+1 (555) 123-4567" required>
+
   <label for="product" style="color: white;">Product (optional)</label>
   <input type="text" id="product" name="product" placeholder="Elegant Wooden Table">
 
   <label for="message" style="color: white;">Your Message</label>
   <textarea id="message" name="message" rows="5" placeholder="How can we help you?" required></textarea>
-
+  <div class="honeypot">
+  <!-- Honeypot Field (Should remain empty) -->
+  <input type="text" name="honeypot" id="honeypot" class="hidden-field" autocomplete="off" />
+  </div>
   <!-- Redirect to custom thank-you page -->
   <input type="hidden" name="_redirect" value="thank-you.html">
   <input type="hidden" name="_captcha" value="false">
@@ -92,6 +98,6 @@
     <p>&copy; 2025 TimberCraft Furnishings | All Rights Reserved</p>
 </footer>
 </section>
-<script src="scripts.js"></script>
+<script src="scripts.js" defer></script>
 </body>
 </html>
