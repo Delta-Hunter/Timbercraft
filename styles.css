@@ -184,13 +184,9 @@ nav a.active::after {
   background: #2c3e50;
   font-size: 1em;
   margin-top: 1em;
-  position: center;
-  top: 1em;
-  left: 0;
-  bottom: 1em;
-  right: 0;
   width: 100%;
 }
+
 .footer-data p {
   margin: 0;
   padding: 0.5em;
@@ -201,29 +197,44 @@ nav a.active::after {
   letter-spacing: 1px;
   transition: color 0.3s ease;
 }
-.footer-navigation,
-.footer-logo {
+
+.footer-navigation {
+  display: flex;
   justify-content: center;
   align-items: center;
-  gap: 10px;
+  gap: 15px;
   font-size: 0.8em;
   line-height: 1.5;
-  text-align: center;
   margin: 0 auto;
+  flex-wrap: wrap;
 }
+
 .footer-navigation a {
   color: #fff;
   text-decoration: none;
   font-weight: 500;
   font-size: 1.2em;
-  transition: color 0s ease;
+  position: relative;
+  transition: color 0.3s ease;
 }
-.footer-logo {
-  max-width: 100%;
-  height: auto;
+
+/* Hover effect without underline animation */
+.footer-navigation a:hover {
+  color: #2980b9;
 }
-.footer-info {
-  margin-top: 20px;
+
+/* Remove underline animation from footer links */
+.footer-navigation a::after {
+  content: none !important;
+}
+
+/* Active link styling without underline */
+.footer-navigation a.active {
+  font-weight: 600;
+  color: #2980b9;
+}
+.footer-navigation a.active::after {
+  width: 0 !important;
 }
 
 /* Social Media Icons */
@@ -236,8 +247,6 @@ nav a.active::after {
 .social-icons a:hover {
   transition: color 0.3s ease;
 }
-
-
 
 /* Sections */
 section {
@@ -836,6 +845,9 @@ section {
   padding: 10px;
   border-radius: 5px;
   border: none;
+}
+.honeypot {
+  display: none;
 }
 #contact button {
   margin-top: 20px;
