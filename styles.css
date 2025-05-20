@@ -47,63 +47,71 @@ p {
   line-height: 1.6;
 }
 
-/* Header section */
+/* Header Section */
 header {
   background: #2c3e50;
   color: #fff;
   padding: 0.61em;
   text-align: center;
-  position: auto;
   z-index: 1000;
   margin: auto;
 }
+
+/* Logo Container */
 .header-logo {
   max-width: 100%;
   height: auto;
   margin: 0 auto;
   padding: 0;
   display: flex;
-  align-items: left;
+  align-items: flex-start;
+  justify-content: left;
 }
+
+/* Title Styles */
 .header-title h1 {
-  max-width:100%;
+  max-width: 100%;
   text-align: center;
   margin: 0;
-  padding: 0;
+  padding: 0 0.5em;
   font-size: 2em;
-  padding: 0px 0.5em;
   line-height: 1.2;
   font-weight: 600;
   background: inherit;
   color: inherit;
 }
 
-header nav {
-  margin: 20px 0;
+/* Navigation Container */
+.header-navigation {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  padding: 0.5em 0;
+  margin: 0 auto;
+  max-width: 100%;
 }
 
-/* Base navigation links */
-nav a {
+/* Navigation Links */
+.header-navigation a {
   color: #fff;
-  margin: 0 15px;
   text-decoration: none;
   font-weight: 400;
   font-size: 1em;
-  padding: 0.5em 0.5em;
-  text-align: left;
-  transition: color 0.2s ease;
+  padding: 0.5em 0.8em;
   position: relative;
   display: inline-block;
+  transition: color 0.2s ease;
+  white-space: nowrap;
 }
 
-/* Hover effect */
-nav a:hover {
-  text-decoration: none;
+/* Hover & Underline Animation */
+.header-navigation a:hover {
   color: #2980b9;
 }
 
-/* Animated underline using ::after */
-nav a::after {
+.header-navigation a::after {
   content: "";
   position: absolute;
   width: 0%;
@@ -114,20 +122,32 @@ nav a::after {
   transition: width 0.3s ease;
 }
 
-/* Expand underline on hover */
-nav a:hover::after {
+.header-navigation a:hover::after {
   width: 100%;
 }
 
-/* Active link styling */
-nav a.active {
+/* Active Link */
+.header-navigation a.active {
   font-weight: 600;
   color: #2980b9;
 }
-
-nav a.active::after {
+.header-navigation a.active::after {
   width: 100%;
 }
+
+/* Responsive Nav for Mobile */
+@media (max-width: 480px) {
+  .header-navigation {
+    gap: 6px;
+    padding: 8px;
+  }
+
+  .header-navigation a {
+    font-size: 0.95em;
+    padding: 0.4em 0.6em;
+  }
+}
+
 
 
 
@@ -202,11 +222,13 @@ nav a.active::after {
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 15px;
+  gap: 10px;
   font-size: 0.8em;
   line-height: 1.5;
   margin: 0 auto;
   flex-wrap: wrap;
+  padding: 0.5em 0;
+  max-width: 100%;
 }
 
 .footer-navigation a {
@@ -215,7 +237,9 @@ nav a.active::after {
   font-weight: 500;
   font-size: 1.2em;
   position: relative;
-  transition: color 0.3s ease;
+  display: inline-block;
+  transition: color 0.2s ease;
+  white-space: nowrap;
 }
 
 /* Hover effect without underline animation */
@@ -235,6 +259,18 @@ nav a.active::after {
 }
 .footer-navigation a.active::after {
   width: 0 !important;
+}
+/* Responsive Nav for Mobile */
+@media (max-width: 480px) {
+  .footer-navigation {
+    gap: 6px;
+    padding: 8px;
+  }
+
+  .footer-navigation a {
+    font-size: 0.95em;
+    padding: 0.4em 0.6em;
+  }
 }
 
 /* Social Media Icons */
